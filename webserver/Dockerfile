@@ -10,4 +10,4 @@ ENV LANG=en_US.utf8
 CMD python3 -m venv venv && \
 	. venv/bin/activate && \
 	pip install -e . && \
-    flask run
+    flask run 0.0.0.0
