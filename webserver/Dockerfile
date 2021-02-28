@@ -1,7 +1,8 @@
 FROM centos:7
 RUN yum -y install epel-release
 RUN yum install -y git python3
-RUN pip install --upgrade pip
+RUN python3 -m pip install -U pip &&\
+    pip install --upgrade pip
 RUN git clone https://github.com/merovigen/student-exam2
 WORKDIR student-exam2
 ENV FLASK_APP=js_example
