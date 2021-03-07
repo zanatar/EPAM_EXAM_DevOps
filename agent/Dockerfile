@@ -1,9 +1,11 @@
 FROM jenkins/ssh-agent:latest
-RUN apt update && \
-	apt install -y software-properties-common && \
-	add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable" && \
-	curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add 
-RUN apt update&& apt install -y python3 python3-pip apt-transport-https ca-certificates docker-ce
+RUN apt-get update && \
+	apt-get install -y apt-transport-https ca-certificates gnupg
+RUN curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg && \
+	echo \
+		"deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian \
+		$(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+RUN apt update&& apt install -y python3 python3-pip docker-ce docker-ce-cli containerd.io
 RUN pip3 install ansible
 RUN groupadd docker && usermod -aG docker jenkins
 COPY jenkins_agent_key.pub /home/jenkins/.ssh/authorized_keys
