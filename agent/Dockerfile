@@ -1,5 +1,5 @@
 FROM jenkins/ssh-agent:latest
-RUN apt update 
+# RUN apt update 
 RUN	apt install -y apt-transport-https ca-certificates gnupg
 RUN curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg && \
 	echo \
