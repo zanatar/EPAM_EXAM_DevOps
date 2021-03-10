@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('test') {
             steps {
-                dir (webserver/student_exam2) {
+                dir ('webserver/student_exam2') {
 					sh "ls"
 					sh "pip3 install -e '.[test]'"
 					sh "coverage run -m pytest"
@@ -17,7 +17,7 @@ pipeline {
 		}
 		stage('build') {
 			steps {
-				dir (webserver) {
+				dir ('webserver') {
 					sh "docker login -u '${DOCKER_USER}' -p '${DOCKER_PASS}'"
 					sh "docker build -t zanatar/webserver:latest ../."
 					sh "docker push zanatar/webserver:latest"
