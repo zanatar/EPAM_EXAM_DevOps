@@ -3,8 +3,8 @@ RUN yum -y install epel-release
 RUN yum install -y git python3
 RUN python3 -m pip install -U pip &&\
     pip install --upgrade pip
-RUN git clone https://github.com/merovigen/student-exam2
-WORKDIR student-exam2
+COPY student_exam2 student_exam2
+WORKDIR student_exam2
 ENV FLASK_APP=js_example
 ENV LANG=en_US.utf8
 CMD python3 -m venv venv && \
