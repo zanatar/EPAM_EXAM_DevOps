@@ -1,0 +1,24 @@
+pipeline {
+    agent any
+    environment {
+        DOCKER_USER = credentials('DOCKER_ID')
+        DOCKER_PASS = credentials('DOCKER_PASS')
+
+    stages {
+        stage('test') {
+            steps {
+                cd student-exam2
+                pip install -e '.[test]'
+				coverage run -m pytest
+				coverage report
+            }
+		}
+		stage('build') {
+			steps {
+				docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}
+				def customImage = docker.build("zanatar/webserver:latest")
+				customImage.push()
+			}
+		}
+           
+                
