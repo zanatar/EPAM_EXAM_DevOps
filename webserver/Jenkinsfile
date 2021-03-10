@@ -3,22 +3,23 @@ pipeline {
     environment {
         DOCKER_USER = credentials('DOCKER_ID')
         DOCKER_PASS = credentials('DOCKER_PASS')
+    }
 
     stages {
         stage('test') {
             steps {
                 cd student-exam2
-                pip install -e '.[test]'
-				coverage run -m pytest
-				coverage report
+                sh "pip install -e '.[test]'"
+				sh "coverage run -m pytest"
+				sh "coverage report"
             }
 		}
 		stage('build') {
 			steps {
-				docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}
-				def customImage = docker.build("zanatar/webserver:latest")
-				customImage.push()
+				sh "docker login -u '${DOCKER_USER}' -p '${DOCKER_PASS}'"
+				sh "docker build -t zanatar/webserver:latest ."
+				sh "docker push zanatar/webserver:latest"
 			}
 		}
-           
-                
+    }  
+}
