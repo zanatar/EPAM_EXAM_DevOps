@@ -8,6 +8,7 @@ pipeline {
         stage('test') {
             steps {
                 sh "cd webserver/student_exam2"
+				sh "ls"
                 sh "pip3 install -e '.[test]'"
 				sh "coverage run -m pytest"
 				sh "coverage report"
