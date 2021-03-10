@@ -19,7 +19,7 @@ pipeline {
 			steps {
 				dir ('webserver') {
 					sh "docker login -u '${DOCKER_USER}' -p '${DOCKER_PASS}'"
-					sh "docker build -t zanatar/webserver:latest ../."
+					sh "docker build -t zanatar/webserver:latest ."
 					sh "docker push zanatar/webserver:latest"
 				}
 			}
