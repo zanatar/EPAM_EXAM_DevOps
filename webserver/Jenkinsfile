@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('test') {
             steps {
-                cd student-exam2
+                cd 'student-exam2'
                 sh "pip install -e '.[test]'"
 				sh "coverage run -m pytest"
 				sh "coverage report"
