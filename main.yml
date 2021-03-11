@@ -56,7 +56,7 @@
       community.docker.docker_container:
         name: "{{item}}"
         image: zanatar/webserver
-        with_items:
+      with_items:
           - web1
           - web2
           - web3
