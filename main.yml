@@ -33,11 +33,12 @@
       package:
         name:
           - python-pip
+          - docker
         state: present
     - name: Install docker via pip
       pip:
         name: 
-          - docker
+          # - docker
           - docker-py
     - name: Start docker
       systemd:
