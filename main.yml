@@ -59,10 +59,10 @@
         # hostname: test.localdomain 
     - name: Create a webserver container
       community.docker.docker_container:
-        name: "{{items.name}}"
+        name: "{{item.name}}"
         image: zanatar/webserver
-        ports: "{{items.port}}"
-        hostname: "{{items.host}}"
+        ports: "{{item.port}}"
+        hostname: "{{item.host}}"
         with_items: "{{servs}}"
         
           # - {name: web1, port: "8081:5000", host: test1.localdomain} 
