@@ -2,6 +2,11 @@
   hosts: all
   become: true
   # become_user: root
+  vars:
+    items:
+        - {name: web1, port: "8081:5000", host: test1.localdomain} 
+        - {name: web2, port: "8082:5000", host: test2.localdomain} 
+        - {name: web3, port: "8083:5000", host: test3.localdomain} 
   # vars:
     # sshgroup_name: sshusers
     # user:
