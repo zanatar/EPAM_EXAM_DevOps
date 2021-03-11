@@ -63,7 +63,7 @@
         image: zanatar/webserver
         ports: "{{items.port}}"
         hostname: "{{items.host}}"
-        with_items: items
+        with_items: "{{items}}"
         
           # - {name: web1, port: "8081:5000", host: test1.localdomain} 
           # - {name: web2, port: "8082:5000", host: test2.localdomain} 
