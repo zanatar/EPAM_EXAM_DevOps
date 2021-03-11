@@ -54,9 +54,9 @@
         # hostname: test.localdomain 
     - name: Create a webserver container
       community.docker.docker_container:
-        name: {{item}}
+        name: "{{item}}"
         image: zanatar/webserver
         with_items:
-          - "web1"
-          - "web2"
-          - "web3"
+          - web1
+          - web2
+          - web3
