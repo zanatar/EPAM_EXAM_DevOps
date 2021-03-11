@@ -48,8 +48,7 @@
     - name: Install docker via pip
       pip:
         name: 
-          # - docker
-          - docker-py
+          - docker
     - name: Start docker
       systemd:
         name: docker
