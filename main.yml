@@ -59,6 +59,6 @@
         ports: "{{item.port}}"
         hostname: "{{item.host}}"
       with_items:
-          - {name: web1, port: 8081, host: test1.localdomain} 
-          - {name: web2, port: 8082, host: test2.localdomain} 
-          - {name: web3, port: 8083, host: test3.localdomain} 
+          - {name: web1, port: "8081:5000", host: test1.localdomain} 
+          - {name: web2, port: "8082:5000", host: test2.localdomain} 
+          - {name: web3, port: "8083:5000", host: test3.localdomain} 
