@@ -50,5 +50,5 @@
         name: web
         image: zanatar/webserver
         ports:
-        - "8080:9000"
+        - "8080:5000"
         hostname: test.localdomain 
