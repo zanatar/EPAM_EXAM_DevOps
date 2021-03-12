@@ -54,6 +54,9 @@
         name: docker
         enabled: true
         state: started
+    - name: Create a network
+      community.docker.docker_network:
+        name: epam_exam
     - name: Create a webserver container
       community.docker.docker_container:
         name: "{{item.name}}"
@@ -61,6 +64,8 @@
         ports: "{{item.port}}"
         hostname: "{{item.host}}"
         auto_remove: yes
+        networks:
+        - name: epam_exam
       loop: "{{servs}}"
     - name: Creates nginx_conf directory
       file:
@@ -77,7 +82,6 @@
         ports: "8080:80"
         auto_remove: yes
         networks:
-          - links: 
-            - "{{servs.name}}"
+        - name: epam_exam
         volumes:
           - ./nginx_conf:/etc/nginx/conf.d
