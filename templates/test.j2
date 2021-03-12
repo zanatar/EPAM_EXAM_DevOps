@@ -1,7 +1,7 @@
 upstream web {
-                server web1:5000;
-				server web2:5000;
-				server web3:5000;
+        {% for x in servs %}
+		server {{x.name}}:5000;
+		{% endfor %}
 }
 
 server {
