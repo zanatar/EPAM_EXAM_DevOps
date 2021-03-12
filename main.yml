@@ -79,6 +79,7 @@
         networks:
           - links: 
             - "{{item.name}}"
+          loop: "{{servs}}"
         volumes:
           - ./nginx_conf:/etc/nginx/conf.d
       loop: "{{servs}}"
