@@ -26,4 +26,3 @@
       template:
         src: test.j2
         dest: ~/test.txt
-		
