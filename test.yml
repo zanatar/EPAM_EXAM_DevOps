@@ -1,6 +1,5 @@
 - name: Install snmpd & play 2048
   hosts: localhost
-  become: true
   # become_user: root
   vars:
     - servs:
