@@ -7,8 +7,9 @@ pipeline {
     stages {
         stage('test') {
             steps {
-				cleanWs()
+				
                 dir ('webserver/student_exam2') {
+					cleanWs()
 					sh "pip3 install -e '.[test]'"
 					sh "coverage run -m pytest"
 					sh "coverage report"
