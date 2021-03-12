@@ -23,7 +23,7 @@
         # VYCzRdK8jlqm8tehUc9c9WhQ== vagrant insecure public key"
   tasks: 
     - name: check jinja2
-	  template:
-	    src: test.j2
-		dest: ~/test.txt
+      template:
+        src: test.j2
+        dest: ~/test.txt
 		
