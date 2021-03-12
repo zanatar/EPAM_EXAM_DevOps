@@ -65,7 +65,7 @@
     - name: create nginx conf from jinja2
       template:
         src: test.j2
-        dest: ./nginx_conf/default.conf
+        dest: ./templates/default.conf
     - name: Create Nginx container
       community.docker.docker_container:
         name: nginx
@@ -75,5 +75,5 @@
         networks:
           links: "{{item.name}}"
         volumes:
-          - ./nginx_conf:/etc/nginx/conf.d
+          - ./templates:/etc/nginx/conf.d
       loop: "{{servs}}"
