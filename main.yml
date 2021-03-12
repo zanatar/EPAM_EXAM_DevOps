@@ -73,7 +73,7 @@
         ports: "8080:80"
         auto_remove: yes
         networks:
-          links: ""{{item.name}}
+          links: "{{item.name}}"
         volumes:
           - ./nginx_conf:/etc/nginx/conf.d
       loop: "{{servs}}"
