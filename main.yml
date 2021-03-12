@@ -62,10 +62,14 @@
         hostname: "{{item.host}}"
         auto_remove: yes
       loop: "{{servs}}"
+    - name: Creates nginx_conf directory
+      file:
+        path: ./nginx_conf
+        state: directory
     - name: create nginx conf from jinja2
       template:
         src: test.j2
-        dest: ./templates/default.conf
+        dest: ./nginx_conf/default.conf
     - name: Create Nginx container
       community.docker.docker_container:
         name: nginx
@@ -75,5 +79,5 @@
         networks:
           links: "{{item.name}}"
         volumes:
-          - ./templates:/etc/nginx/conf.d
+          - ./nginx_conf:/etc/nginx/conf.d
       loop: "{{servs}}"
