@@ -78,8 +78,6 @@
         auto_remove: yes
         networks:
           - links: 
-            - "{{item.name}}"
-            loop: "{{servs}}"
+            - "{{servs.name}}"
         volumes:
           - ./nginx_conf:/etc/nginx/conf.d
-      loop: "{{servs}}"
